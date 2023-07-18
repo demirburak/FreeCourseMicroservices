@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeCourse.IdentityServer", "IdentityServer\FreeCourse.IdentityServer\FreeCourse.IdentityServer.csproj", "{244E032D-BD09-4087-A364-A7DB90BFD8B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", "{E7BA4B0B-D345-4704-92CB-4EB735A55B6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeCourse.Services.PhotoStock", "Services\PhotoStock\FreeCourse.Services.PhotoStock\FreeCourse.Services.PhotoStock.csproj", "{752C3716-E40A-4A5D-9EE2-871F208A2F86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{244E032D-BD09-4087-A364-A7DB90BFD8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{244E032D-BD09-4087-A364-A7DB90BFD8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{244E032D-BD09-4087-A364-A7DB90BFD8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{752C3716-E40A-4A5D-9EE2-871F208A2F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752C3716-E40A-4A5D-9EE2-871F208A2F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752C3716-E40A-4A5D-9EE2-871F208A2F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752C3716-E40A-4A5D-9EE2-871F208A2F86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +64,8 @@ Global
 		{5F7FF027-E883-4C48-8D73-E712E886C485} = {66663972-23C0-4A3C-9300-C70314398B5B}
 		{E9B62623-5E96-445C-A977-3D9830F49DC8} = {66663972-23C0-4A3C-9300-C70314398B5B}
 		{244E032D-BD09-4087-A364-A7DB90BFD8B3} = {50D7F22D-9341-4CD7-99E2-0601F3F7F9D6}
+		{E7BA4B0B-D345-4704-92CB-4EB735A55B6E} = {2D310EE3-D860-4EA2-8F13-BA7DDEB381AB}
+		{752C3716-E40A-4A5D-9EE2-871F208A2F86} = {E7BA4B0B-D345-4704-92CB-4EB735A55B6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B0175FA-95D8-43A0-9268-6CDB89C6B7A5}
