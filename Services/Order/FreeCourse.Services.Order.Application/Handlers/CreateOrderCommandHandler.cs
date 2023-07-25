@@ -32,7 +32,8 @@ namespace FreeCourse.Services.Order.Application.Handlers
                 newOrder.AddOrderItem(x.ProductId, x.ProductName, x.Price, x.PictureUrl);
             });
 
-            await _orderDbContext.Orders.AddAsync(newOrder);
+            var response = await _orderDbContext.Orders.AddAsync(newOrder);
+            await _orderDbContext.SaveChangesAsync();
             return Response<CreatedOrderDto>.Success(new CreatedOrderDto() { OrderId = newOrder.Id }, 200);
         }
     }
