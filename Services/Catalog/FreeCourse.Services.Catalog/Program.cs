@@ -36,6 +36,16 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Seed data
+using(var serviceProvider = builder.Services.BuildServiceProvider())
+{
+    var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+    if (!categoryService.GetAllAsync().Result.Data.Any())
+    {
+        categoryService.CreateAsync(new FreeCourse.Services.Catalog.Dtos.CategoryDto() { Name = "Asp.Net Core Kategorisi" }).Wait();
+        categoryService.CreateAsync(new FreeCourse.Services.Catalog.Dtos.CategoryDto() { Name = "SQL Server Kategorisi" }).Wait();
+    }
+}
 
 var app = builder.Build();
 
