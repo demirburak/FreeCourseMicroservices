@@ -1,0 +1,49 @@
+﻿@model FreeCourse.Web.Models.SigninInput
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Üye Giriş</h5>
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form asp-controller="Auth" asp-action="SignIn" method="post">
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email" asp-for="Email" id="form2Example1" class="form-control" />
+                        <label asp-for="Email" class="form-label" for="form2Example1"></label>
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input asp-for="Password" type="password" id="form2Example2" class="form-control" />
+                        <label asp-for="Password" class="form-label" for="form2Example2"></label>
+                        <span class="text-danger" asp-validation-for="Password"></span>
+                    </div>
+
+                    <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-center">
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                                <input asp-for="IsRemember" class="form-check-input" type="checkbox" id="form2Example31" />
+                                <label asp-for="IsRemember" class="form-check-label" for="form2Example31"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Giriş yap</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
