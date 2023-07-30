@@ -9,3 +9,5 @@ Services
 IdentityServer => 5001
 
 Gateway => 5000
+
+Web => 5010
