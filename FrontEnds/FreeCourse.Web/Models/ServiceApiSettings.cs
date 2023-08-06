@@ -10,6 +10,8 @@
 
         public ServiceApi Catalog { get; set; }
 
+        public ServiceApi PhotoStock { get; set; }
+
     }
 
     public class ServiceApi
