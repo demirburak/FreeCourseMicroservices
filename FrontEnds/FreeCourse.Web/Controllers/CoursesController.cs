@@ -72,6 +72,7 @@ namespace FreeCourse.Web.Controllers
                 CategoryId = course.CategoryId,
                 UserId = course.UserId,
                 Description = course.Description,
+                Picture = course.Picture
             };
 
             return View(courseUpdateInput);
@@ -88,7 +89,7 @@ namespace FreeCourse.Web.Controllers
 
             if (!ModelState.IsValid) { return View(); }
 
-            if(!await _catalogService.UpdateCourse(courseUpdateInput))
+            if (!await _catalogService.UpdateCourse(courseUpdateInput))
             {
                 ViewBag.Message = "Güncelleme yapılamadı.";
                 return View();

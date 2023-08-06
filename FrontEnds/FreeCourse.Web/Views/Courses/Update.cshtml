@@ -19,7 +19,7 @@
                     <div asp-validation-summary="ModelOnly"></div>
                     <input type="hidden" asp-for="Id" />
                     <input type="hidden" asp-for="UserId" />
-                    <input type="hidden" asp-for="Picture" value="@(Model.Picture is null ? string.Empty : Model.Picture)" />
+                    <input type="hidden" asp-for="Picture" />
 
                     <div class="mb-3">
                         <label class="form-label" asp-for="CategoryId"></label>
@@ -51,6 +51,11 @@
                         <label class="form-label" asp-for="Feature.Duration"></label>
                         <input class="form-control" asp-for="Feature.Duration" />
                         <span class="text-danger" asp-validation-for="Feature.Duration"></span>
+                    </div
+
+                      <div class="mb-3">
+                        <label class="form-label" asp-for="PhotoFormFile"></label>
+                        <input type="file" class="form-control" asp-for="PhotoFormFile" />
                     </div>
 
                     <button type="submit" class="btn btn-primary">Kurs Güncelle</button>
