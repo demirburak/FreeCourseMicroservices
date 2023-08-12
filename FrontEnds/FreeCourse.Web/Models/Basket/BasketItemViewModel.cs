@@ -10,7 +10,7 @@
 
         public decimal Price { get; set; }
 
-        private decimal? DiscountAppliedPrice { get; set; }
+        private decimal? DiscountAppliedPrice;
 
         public decimal GetCurrentPrice() => DiscountAppliedPrice.HasValue ?  DiscountAppliedPrice.Value :  Price;
 

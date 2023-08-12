@@ -14,6 +14,8 @@
 
         public ServiceApi Basket { get; set; }
 
+        public ServiceApi Discount { get; set; }
+
     }
 
     public class ServiceApi
