@@ -72,7 +72,7 @@ namespace FreeCourse.Web.Services
                 return new OrderCreatedViewModel() { Error = "Sipariş oluşturulamadı.", IsSuccessful = false };
             }
             var str = response.Content.ReadAsStreamAsync();
-            var orderCreatedViewModel =  await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
+            var orderCreatedViewModel = await response.Content.ReadFromJsonAsync<Response<OrderCreatedViewModel>>();
 
             orderCreatedViewModel.Data.IsSuccessful = true;
 
@@ -89,9 +89,56 @@ namespace FreeCourse.Web.Services
             return response.Data;
         }
 
-        public Task SuspendOrder(CheckoutInfoInput checkoutInfoInput)
+        public async Task<SuspendCreatedViewModel> SuspendOrder(CheckoutInfoInput checkoutInfoInput)
         {
-            throw new NotImplementedException();
+
+            var basket = await _basketService.Get();
+
+            var orderCreateInput = new OrderCreateInput()
+            {
+                BuyerId = _sharedIdentityService.GetUserId,
+                Address = new AddressCreateInput()
+                {
+                    District = checkoutInfoInput.District,
+                    Line = checkoutInfoInput.Line,
+                    Province = checkoutInfoInput.Province,
+                    Street = checkoutInfoInput.Street,
+                    ZipCode = checkoutInfoInput.ZipCode
+                },
+            };
+
+            basket.BasketItems.ForEach(x =>
+            {
+                orderCreateInput.OrderItems.Add(new OrderItemCreateInput()
+                {
+                    PictureUrl = string.Empty,
+                    Price = x.GetCurrentPrice(),
+                    ProductId = x.CourseId,
+                    ProductName = x.CourseName
+                });
+            });
+
+
+            var paymentInfoInput = new PaymentInfoInput()
+            {
+                CardName = checkoutInfoInput.CardName,
+                CardNumber = checkoutInfoInput.CardNumber,
+                CVV = checkoutInfoInput.CVV,
+                Expiration = checkoutInfoInput.Expiration,
+                TotalPrice = basket.TotalPrice,
+                Order = orderCreateInput
+            };
+
+            var responsePayment = await _paymentService.ReceivePayment(paymentInfoInput);
+
+            if (!responsePayment)
+            {
+                return new SuspendCreatedViewModel() { Error = "Ödeme alınamadı.", IsSuccessful = false };
+            }
+
+            await _basketService.Delete();
+            return new SuspendCreatedViewModel() { IsSuccessful = true };
+
         }
     }
 }
