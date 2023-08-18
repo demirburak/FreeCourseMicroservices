@@ -25,7 +25,7 @@
                     </ul>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav me-5">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     @User.Identity.Name
@@ -33,6 +33,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" asp-controller="User" asp-action="Index">Profil</a></li>
                                     <li><a class="dropdown-item" asp-controller="Basket" asp-action="Index">Sepet</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Order" asp-action="CheckoutHistory">Satınalma Geçmişi</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" asp-controller="Auth" asp-action="Logout">Çıkış</a></li>
                                 </ul>
