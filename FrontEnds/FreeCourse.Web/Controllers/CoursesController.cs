@@ -86,6 +86,7 @@ namespace FreeCourse.Web.Controllers
 
             courseUpdateInput.Picture = (courseUpdateInput.Picture is null) ? string.Empty : courseUpdateInput.Picture;
             ModelState.Remove("Picture");
+            ModelState.Remove("PhotoFormFile");
 
             if (!ModelState.IsValid) { return View(); }
 

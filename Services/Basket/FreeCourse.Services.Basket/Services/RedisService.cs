@@ -18,6 +18,22 @@ namespace FreeCourse.Services.Basket.Services
 
         public IDatabase GetDb(int db = 1) => _connectionMultiplexer.GetDatabase(db);
 
+        public List<string> GetAllKeys()
+        {
+            //var servers = _connectionMultiplexer.GetServers();
+            //foreach (var server in servers)
+            //{
+            //    var keys = server.
+            //    if (keys is not null)
+            //    {
+            //        List<string> listKeys = keys.Select(k => (string)k).ToList();
+            //        return listKeys;
+            //    }
+            //}
+            
+
+            return new List<string>();
+        }
 
     }
 }

@@ -24,6 +24,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<CreateOrderMessageConsumer>();
+    x.AddConsumer<CourseNameChangedEventConsumer>();
 
     //Default port : 5672    
     x.UsingRabbitMq((context, cfg) =>
@@ -37,6 +38,11 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint("create-order-service", e =>
         {
             e.ConfigureConsumer<CreateOrderMessageConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint("course-name-changed-event-order-service", e =>
+        {
+            e.ConfigureConsumer<CourseNameChangedEventConsumer>(context);
         });
 
     });
