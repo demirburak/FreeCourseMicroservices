@@ -68,7 +68,7 @@ services:
     container_name: identityserver.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionStrings:DefaultConnection=Server=identitydb,3433;Database=IdentityDb;User=sa;Password=Password12*;TrustServerCertificate=false; Encrypt=false"
+      - "ConnectionStrings:DefaultConnection=Server=identitydb,1433;Database=IdentityDb;User=sa;Password=Password12*;TrustServerCertificate=false; Encrypt=false"
     ports:
       - "5001:80"
     depends_on:
@@ -80,6 +80,7 @@ services:
       - IdentityServerURL=http://identityserver.api
       - RedisSettings:Port=6379
       - RedisSettings:Host=basketdb
+      - RabbitMQUrl=rabbitmq
     ports:
       - "5013:80"
     depends_on:
@@ -100,7 +101,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - IdentityServerURL=http://identityserver.api
-      - "ConnectionStrings:PostgreSql=UserId=admin;Password=Password12*;Server=discountdb;Port=25432;Database=discountdb;Integrated Security=true;Pooling=true"
+      - "ConnectionStrings:PostgreSql=UserId=admin;Password=Password12*;Server=discountdb;Port=5432;Database=discountdb;Integrated Security=true;Pooling=true"
     ports:
       - "5014:80"
     depends_on:
@@ -119,7 +120,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - IdentityServerURL=http://identityserver.api
       - RabbitMQUrl=rabbitmq
-      - "ConnectionStrings:DefaultConnection=Server=orderdb,4433; Database=OrderDb; User=sa; Password=Password12*; TrustServerCertificate=false; Encrypt=false"
+      - "ConnectionStrings:DefaultConnection=Server=orderdb,1433; Database=OrderDb; User=sa; Password=Password12*; TrustServerCertificate=false; Encrypt=false"
     ports:
       - "5015:80"
     depends_on:
