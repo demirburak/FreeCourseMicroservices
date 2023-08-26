@@ -18,21 +18,9 @@ namespace FreeCourse.Services.Basket.Services
 
         public IDatabase GetDb(int db = 1) => _connectionMultiplexer.GetDatabase(db);
 
-        public List<string> GetAllKeys()
+        public IEnumerable<RedisKey> GetAllKeys(int db = 1)
         {
-            //var servers = _connectionMultiplexer.GetServers();
-            //foreach (var server in servers)
-            //{
-            //    var keys = server.
-            //    if (keys is not null)
-            //    {
-            //        List<string> listKeys = keys.Select(k => (string)k).ToList();
-            //        return listKeys;
-            //    }
-            //}
-            
-
-            return new List<string>();
+            return _connectionMultiplexer.GetServer(_host, _port).Keys(db);
         }
 
     }

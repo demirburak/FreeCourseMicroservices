@@ -1,9 +1,7 @@
 ﻿using Dapper;
-using FreeCourse.Services.Discount.Models;
 using FreeCourse.Shared.Dtos;
 using Npgsql;
 using System.Data;
-using System.Net;
 
 namespace FreeCourse.Services.Discount.Services
 {

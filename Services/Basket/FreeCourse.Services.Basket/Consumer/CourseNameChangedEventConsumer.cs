@@ -20,30 +20,23 @@ namespace FreeCourse.Services.Basket.Consumer
         public async Task Consume(ConsumeContext<CourseNameChangedEvent> context)
         {
 
-            StackExchange.Redis.RedisResult hashes = _redisService.GetDb().Execute("KEYS", "*");
+            var allKeys = _redisService.GetAllKeys().ToList();
 
-            List<BasketDto> updateBasketDtos = new();
-            foreach (var hash in hashes.ToDictionary())
+
+            foreach (var key in allKeys)
             {
-                var tempValue = _redisService.GetDb().StringGet(hash.Key);
-                var basketDto = JsonSerializer.Deserialize<BasketDto?>(tempValue);
-                if (basketDto is not null)
+                BasketDto basketDto = JsonSerializer.Deserialize<BasketDto>(_redisService.GetDb().StringGet(key));
+                foreach (var item in basketDto.BasketItems)
                 {
-                    basketDto.BasketItems.ForEach(x =>
+                    if (item.CourseId == context.Message.CourseId)
                     {
-                        if (x.CourseId == context.Message.CourseId)
-                        {
-                            x.CourseName = context.Message.UpdatedName;
-                            updateBasketDtos.Add(basketDto);
-                        }
-                    });
+                        item.CourseName = context.Message.UpdatedName;
+                        await _basketService.SaveOrUpdate(basketDto);
+                    }
                 }
             }
 
-            foreach (var basketDto in updateBasketDtos)
-            {
-                await _basketService.SaveOrUpdate(basketDto);
-            }
+           
 
         }
     }
