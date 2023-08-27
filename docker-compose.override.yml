@@ -94,7 +94,7 @@ services:
       - "5012:80"
     volumes:
       - type: bind
-        source: C:\Users\demir\source\repos\UdemyMicroservicesPicturesBindingForDocker
+        source: C:\Users\demir\source\repos\FreeCourseMicroservicesPicturesBindingForDocker
         target: /app/wwwroot/photos
   discount.api:
     container_name: discount.api
