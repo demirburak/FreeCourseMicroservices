@@ -11,3 +11,6 @@ Microservis eğitimi // Microservice example
 8. Gateway service -> Ocelot
 9. Identity service -> IdentityServer4, MSSQL Db
 10. Event bus -> RabbitMQ
+
+If you want to run the project on vs, you can run the docker compose file in the MicroserviceDatabase folder. This docker compose will only run the required db containers.
+Otherwise you want to run this project without code, you can run docker compose file in main folder. This docker compose will run all db and api containers.
